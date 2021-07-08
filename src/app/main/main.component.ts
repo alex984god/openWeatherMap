@@ -48,7 +48,8 @@ export class MainComponent implements OnInit {
   };
 
   public initMapAnguar() {
-    const map = new google.maps.Map(document.getElementById("map"), {
+    const map = new google.maps.Map(
+      document.getElementById("map") as HTMLElement, {
       center: { lat: 42.7339, lng: 25.4858 },
       zoom: 7.7,
     });
