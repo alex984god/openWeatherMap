@@ -11,3 +11,14 @@
   <app-root></app-root>
 </body>
 </html>
+
+<script>
+  function initMap() {
+    new google.maps.Map(document.getElementById("map"), {
+      center: { lat: 42.7339, lng: 25.4858 },
+      zoom: 7,
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbtEj3Hy65V-vJH7iOPk5XmqPDMTPDx6U&callback=initMap"
+        type="text/javascript"></script>
