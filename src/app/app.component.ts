@@ -11,9 +11,10 @@ export class AppComponent {
     {img: "https://via.placeholder.com/600.png/021/fff"},
     {img: "https://via.placeholder.com/600.png/321/fff"},
     {img: "https://via.placeholder.com/600.png/422/fff"},
+    {img: "https://via.placeholder.com/600.png/654/fff"},
     {img: "https://via.placeholder.com/600.png/654/fff"}
   ];
-  slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
+  slideConfig = {"slidesToShow": 1, "slidesToScroll": 7};
   
   addSlide() {
     this.slides.push({img: "http://placehold.it/350x150/777777"})

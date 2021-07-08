@@ -1,3 +1,6 @@
+body{
+  background-color: red;
+}
 .slick-slider {
     width: 88%;
     margin: auto;
@@ -8,6 +11,13 @@ body .slick-prev,
 body .slick-next {
     height: 45px;
     width: 40px;
-    background: grey !important;
-    z-index: 100;
+     z-index: 100;
+     background:#1da5ba!important;
+  color:#1da5ba!important;
+}
+
+.slick-prev
+{
+  background:#1da5ba;
+  color:#1da5ba
 }
