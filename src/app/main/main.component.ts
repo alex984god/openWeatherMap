@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    window['angularComponentReference'] = { component: this, zone: this.ngZone, initMapAnguar: () => this.initMapAnguar(), };
+    window['mainComponentReference'] = { component: this, zone: this.ngZone, initMapAnguar: () => this.initMapAnguar(), };
   };
   ngAfterViewInit(): void {
     this.loadScripts();
@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
   public loadScripts() {
     const node = document.createElement('script');
     node.text = `function initMap() {
-     window.angularComponentReference.zone.run(() => { window.angularComponentReference.initMapAnguar(); });
+     window.mainComponentReference.zone.run(() => { window.mainComponentReference.initMapAnguar(); });
      }`
     node.type = 'text/javascript';
     node.async = false;
@@ -50,7 +50,7 @@ export class MainComponent implements OnInit {
   public initMapAnguar() {
     const map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 42.7339, lng: 25.4858 },
-      zoom: 7.5,
+      zoom: 7.7,
     });
 
     const tourStops = [
