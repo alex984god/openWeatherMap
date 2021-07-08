@@ -8,7 +8,6 @@ export class WeatherService {
   url = 'https://api.openweathermap.org/data/2.5/find?'
   apiKey = 'de8904fbaac650a197b2565d60b42574'
 
-
   constructor(private http: HttpClient) { }
 
   //getWeatherDataByChords(lat, lon){
