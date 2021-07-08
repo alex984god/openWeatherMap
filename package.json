@@ -1,7 +1,9 @@
 {
   "name": "open-weather",
   "version": "0.0.0",
-  "keywords": [ "google" ],
+  "keywords": [
+    "google"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -22,8 +24,14 @@
     "@angular/router": "~10.1.6",
     "bootstrap": "^4.6.0",
     "install": "^0.13.0",
+    "jquery": "^3.6.0",
+    "ngx-slick-carousel": "^0.5.1",
     "npm": "^7.19.0",
     "rxjs": "~6.6.0",
+    "slick": "^1.12.2",
+    "slick-carousel": "^1.8.1",
+    "slick-slider": "^1.8.2",
+    "slider": "^1.0.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

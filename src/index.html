@@ -14,10 +14,35 @@
 
 <script>
   function initMap() {
-    new google.maps.Map(document.getElementById("map"), {
+    const map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 42.7339, lng: 25.4858 },
-      zoom: 7,
+      zoom: 8,
     });
+    const tourStops = [
+    [{ lat: 42.136097, lng: 24.742168 }, "Plovdiv"],
+    [{ lat: 42.69751, lng: 23.32415 }, "Sofia"],
+    [{ lat: 42.50606, lng: 27.46781 }, "Burgas"],
+    [{ lat: 42.658707, lng: 27.736273 }, "Nesebar"],
+    [{ lat: 42.02754 , lng: 23.99155 }, "Velingrad"],
+  ];
+  // Create an info window to share between markers.
+  const infoWindow = new google.maps.InfoWindow();
+  // Create the markers.
+  tourStops.forEach(([position, title], i) => {
+    const marker = new google.maps.Marker({
+      position,
+      map,
+      title: `${i + 1}. ${title}`,
+      label: `${i + 1}`,
+      optimized: false,
+    });
+    // Add a click listener for each marker, and set up the info window.
+    marker.addListener("click", () => {
+      infoWindow.close();
+      infoWindow.setContent(marker.getTitle());
+      infoWindow.open(marker.getMap(), marker);
+    });
+  });
   }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbtEj3Hy65V-vJH7iOPk5XmqPDMTPDx6U&callback=initMap"
