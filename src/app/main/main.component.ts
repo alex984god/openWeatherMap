@@ -22,7 +22,11 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.weatherService.parseBulgarianCitiesFromJSON()
       .then(data => {
-        this.cities = data;
+        //Get all Bulgarian cities with population grater than 3000 people
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].population && +data[i].population > 3000)
+            this.cities.push(data[i]);
+        }
       });
 
     window['mainComponentReference'] = { component: this, zone: this.ngZone, initMapAnguar: () => this.initMapAnguar(), };
