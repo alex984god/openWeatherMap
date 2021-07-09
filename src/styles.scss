@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-$body-color:red;
-body{
-    background: $body-color;
+body .slick-prev, 
+body .slick-next {
+    height: 45px;
+    width: 40px;
+     z-index: 100;
+     background:#1da5ba!important;
+  color:#1da5ba!important;
+}
+
+.slick-prev
+{
+  background:#1da5ba;
+  color:#1da5ba
 }
