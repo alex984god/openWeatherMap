@@ -235,3 +235,4 @@ appsettings.Development.json
 # Client scripts
 *.js
 *.js.map
+dist/
