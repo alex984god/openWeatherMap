@@ -65,7 +65,11 @@
       </div>
     </div>
   </div>
-
+<div class="row">
+  <div class="col-md-10">
+    <div class="header">
+      <h2 *ngIf="currentSelectedCity !== null && currentSelectedCityWatherInfo !== null">7 day forecats</h2>
+    </div>
   <div *ngIf="currentSelectedCity !== null && currentSelectedCityWatherInfo !== null">
     <ngx-slick-carousel class="carousel"
                         #slickModal="slick-carousel"
@@ -77,18 +81,23 @@
       <div ngxSlickItem *ngFor="let dailyWeather of currentSelectedCityWatherInfo.daily" class="slide">
 
         <div style="width: 100%; height: 100%">
-          <div style="width: 100%; height: 24px; text-align:center">
-            <span>{{currentSelectedCity.city}}</span>
-            <br />
-            <span>{{parseDate(dailyWeather.dt)}}</span>
+          <div class="weather-info">
+            <p>{{currentSelectedCity.city}}</p>
+            
+            <p>{{parseDate(dailyWeather.dt)}}</p>
+            <p>{{dailyWeather.weather[0]['description']}}</p>
+            <p>{{calculateCelsiusTemperature(dailyWeather.temp['day'])}} C<sup>0</sup></p>
+            
           </div>
 
-          <div style="width: 100%; height: 300px">
-            <img src="{{calculateWeatherIconURL(dailyWeather)}}" alt="" style="width:100%; height:100%">
+          <div class="weather-image">
+            <img src="{{calculateWeatherIconURL(dailyWeather)}}" alt="">
           </div>
         </div>
       </div>
     </ngx-slick-carousel>
   </div>
+</div>
+</div>
 
 </div>

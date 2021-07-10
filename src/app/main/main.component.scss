@@ -1,6 +1,27 @@
+
+.header h1, .header h2{
+  text-align:center;
+}
 .slick-slider {
-  width: 300px;
-  height: 324px;
-  margin: auto;
-  background: aqua;
+  width: 250px;
+  height: auto;
+  margin: 0 auto;
+  background: #088787;
+}
+
+.weather-info{
+  padding:15px;
+}
+.weather-info p{
+  margin-bottom:0;
+  padding:0px 0 2px 0;
+  font-weight:700;
+  color:#fff;
+  text-align:center;
+}
+.weather-image img{
+  display:block;
+  width:150px;
+  height:auto;
+  margin:0 auto;
 }

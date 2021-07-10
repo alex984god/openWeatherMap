@@ -230,7 +230,7 @@ export class MainComponent implements OnInit {
   };
 
   public calculateWeatherIconURL(dailyWeather: any): string {
-    return "http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + "@4x.png";
+    return "http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + "@2x.png";
   };
   public parseDate(dateInSeconds: any): string {
     var date = new Date(dateInSeconds * 1000);
