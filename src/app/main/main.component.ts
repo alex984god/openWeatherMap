@@ -1,7 +1,12 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
+
+//clases
 import { City } from '../../utils/City';
 import { Coordinate } from '../../utils/Coordinate';
-import { WeatherService } from '../weather.service';
+
+//services
+import { MapService } from '../services/map.service';
+import { WeatherService } from '../services/weather.service';
 
 @Component({
   selector: 'app-main',
@@ -16,11 +21,12 @@ export class MainComponent implements OnInit {
 
   constructor(
     private ngZone: NgZone,
-    private weatherService: WeatherService) {
+    private weatherService: WeatherService,
+    private mapService: MapService) {
   }
 
   ngOnInit(): void {
-    this.weatherService.parseBulgarianCitiesFromJSON()
+    this.mapService.parseBulgarianCitiesFromJSON()
       .then(data => {
         //Get all Bulgarian cities with population greater than 3000 people
         for (var i = 0; i < data.length; i++) {
@@ -93,7 +99,7 @@ export class MainComponent implements OnInit {
       });
 
       marker.addListener('mouseover', function () {
-        self.weatherService.getPolygonForCityName(city.city).subscribe((data: any) => {
+        self.mapService.getPolygonForCityName(city.city).subscribe((data: any) => {
           var cityPolygon: any = null;
           if (!data.length) {
             if (data.type && (data.type === "city" || data.type === "town" || data.type === "administrative")) {

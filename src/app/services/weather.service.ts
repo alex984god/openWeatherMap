@@ -6,22 +6,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class WeatherService {
   url = 'https://api.openweathermap.org/data/2.5/find?'
-  urlPolygon = 'https://nominatim.openstreetmap.org/search.php?'
   apiKey = 'de8904fbaac650a197b2565d60b42574'
 
   constructor(private http: HttpClient) { }
-
-  parseBulgarianCitiesFromJSON(): Promise<any> {
-    return this.http.get("./assets/content/bgCities.json").toPromise();
-  };
-
-  getPolygonForCityName(cityName: string) {
-    let params = new HttpParams()
-      .set("q", cityName)
-      .set("polygon_geojson", "1")
-      .set("format", "json")
-    return this.http.get(this.urlPolygon, { params })
-  };
 
   //getWeatherDataByChords(lat, lon){
   //  let params = new HttpParams()
@@ -31,6 +18,5 @@ export class WeatherService {
   //  .set('appid',this.apiKey)
   //  return this.http.get(this.url, {params} )
   //}
-
 
 }
