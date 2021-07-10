@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { AngularMaterialModule } from './angular-material.module';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -16,7 +17,8 @@ import { MainComponent } from './main/main.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

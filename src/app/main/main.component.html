@@ -1,1 +1,94 @@
-<div id="map" style="height:700px ; width: 100%"></div>
+<div>
+  <div class="row">
+    <div id="map" style="height:700px" class="col-md-10"></div>
+
+    <div *ngIf="currentSelectedCity !== null" style="height:700px" class="col-md-2">
+      <div class="row">
+        <div class="col-md-12">
+          <span>City name</span>:
+          <span>{{currentSelectedCity.city}}</span>
+        </div>
+
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p>Humidity:</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p style="text-align: center">{{currentSelectedCityWatherInfo.current.humidity}}</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p>Preasure:</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p style="text-align: center">{{currentSelectedCityWatherInfo.current.pressure}}</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p>Temperature:</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p style="text-align: center">
+            {{calculateCelsiusTemperature(currentSelectedCityWatherInfo.current.temp)}} <sup>0</sup>C
+          </p> 
+        </div>
+
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p>Weather:</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p style="text-align: center">{{currentSelectedCityWatherInfo.current.weather[0].description}}</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p style="text-align: center">MainWeather:</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p style="text-align: center">{{currentSelectedCityWatherInfo.current.weather[0].main}}</p>
+        </div>
+
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p>WindDegree:</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p style="text-align: center">{{currentSelectedCityWatherInfo.current.wind_deg}}</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p>WindGust:</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p style="text-align: center">{{currentSelectedCityWatherInfo.current.wind_gust}}</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p>WindSpeed:</p>
+        </div>
+        <div class="col-md-6" *ngIf="currentSelectedCityWatherInfo !== null">
+          <p style="text-align: center">{{currentSelectedCityWatherInfo.current.wind_speed}}</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="currentSelectedCity !== null && currentSelectedCityWatherInfo !== null">
+    <ngx-slick-carousel class="carousel"
+                        #slickModal="slick-carousel"
+                        [config]="slideConfig"
+                        (init)="slickInit($event)"
+                        (breakpoint)="breakpoint($event)"
+                        (afterChange)="afterChange($event)"
+                        (beforeChange)="beforeChange($event)">
+      <div ngxSlickItem *ngFor="let dailyWeather of currentSelectedCityWatherInfo.daily" class="slide">
+
+        <div style="width: 100%; height: 100%">
+          <div style="width: 100%; height: 24px; text-align:center">
+            <span>{{currentSelectedCity.city}}</span>
+            <br />
+            <span>{{parseDate(dailyWeather.dt)}}</span>
+          </div>
+
+          <div style="width: 100%; height: 300px">
+            <img src="{{calculateWeatherIconURL(dailyWeather)}}" alt="" style="width:100%; height:100%">
+          </div>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+
+</div>

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, NgZone } from '@angular/core';
 
 //clases
@@ -11,16 +12,26 @@ import { WeatherService } from '../services/weather.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
+  providers: [DatePipe]
 })
 export class MainComponent implements OnInit {
 
   public map: google.maps.Map;
   public polygons: Array<google.maps.Polygon> = new Array<google.maps.Polygon>();
   public cities: City[] = [];
+  public currentSelectedCity: City | null = null;
+  public currentSelectedCityWatherInfo: any | null = null;
+
+  public slideConfig = {
+    "slidesToShow": 1,
+    "slidesToScroll": 1
+  };
+  public title = 'openWeather';
 
   constructor(
     private ngZone: NgZone,
+    private datePipe: DatePipe,
     private weatherService: WeatherService,
     private mapService: MapService) {
   }
@@ -82,13 +93,22 @@ export class MainComponent implements OnInit {
         map: map,
         title: `${i + 1}. ${city.city}`,
         label: `${i + 1}`,
-        optimized: true,
+        optimized: true
       });
 
       marker.addListener("click", () => {
         infoWindow.close();
         infoWindow.setContent(marker.getTitle());
         infoWindow.open(marker.getMap(), marker);
+        this.currentSelectedCity = city;
+
+        self.weatherService.getWeatherDataByLatLonCurrentAndNext7Days(+city.lat, +city.lng).subscribe((data: any) => {
+          if (data) {
+            this.currentSelectedCityWatherInfo = data;
+          }
+        },
+          (error) => {
+          });
       });
 
       marker.addListener('mouseout', function () {
@@ -193,5 +213,31 @@ export class MainComponent implements OnInit {
       }
       return returnPolygon;
     }
+  };
+
+  //slider
+  public addSlide() {
+  };
+  public removeSlide() {
+  };
+  public slickInit(e) {
+  };
+  public breakpoint(e) {
+  };
+  public afterChange(e) {
+  };
+  public beforeChange(e) {
+  };
+
+  public calculateWeatherIconURL(dailyWeather: any): string {
+    return "http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + "@4x.png";
+  };
+  public parseDate(dateInSeconds: any): string {
+    var date = new Date(dateInSeconds * 1000);
+    return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm:ss');
+  };
+  public calculateCelsiusTemperature(temperature: number): number {
+    var roundWholeTemp = +(temperature * 10 * 10).toFixed(0);
+    return (roundWholeTemp - 27315) / 100;
   };
 }

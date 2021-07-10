@@ -5,18 +5,25 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class WeatherService {
-  url = 'https://api.openweathermap.org/data/2.5/find?'
   apiKey = 'de8904fbaac650a197b2565d60b42574'
 
   constructor(private http: HttpClient) { }
 
-  //getWeatherDataByChords(lat, lon){
-  //  let params = new HttpParams()
-  //  .set('lat', '42.725077')
-  //  .set('lon', '25.124347')
-  //  .set('cnt', '50')
-  //  .set('appid',this.apiKey)
-  //  return this.http.get(this.url, {params} )
-  //}
+  getWeatherDataByLatLonCurrentDay(lat: number, lon: number) {
+    let params = new HttpParams()
+      .set('lat', lat.toString())
+      .set('lon', lon.toString())
+      .set('appid', this.apiKey)
+    return this.http.get("https://api.openweathermap.org/data/2.5/weather?", { params })
+  }
+
+  getWeatherDataByLatLonCurrentAndNext7Days(lat: number, lon: number) {
+    let params = new HttpParams()
+      .set('lat', lat.toString())
+      .set('lon', lon.toString())
+      .set('exclude', "minutely,hourly,alerts") //current, minutely, hourly, daily, alerts
+      .set('appid', this.apiKey)
+    return this.http.get("https://api.openweathermap.org/data/2.5/onecall?", { params })
+  }
 
 }
