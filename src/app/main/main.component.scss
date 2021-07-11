@@ -1,27 +1,47 @@
-
+$darrk-blue:#088787;
+$light-blue:#0df1f1;
 .header h1, .header h2{
   text-align:center;
+  color:$darrk-blue;
 }
-.slick-slider {
-  width: 250px;
-  height: auto;
-  margin: 0 auto;
-  background: #088787;
+.main-wrapper{
+  padding-top: 50px;
+.right-content{
+  margin-top:50px;
+  .dark-blue{
+    background-color: $darrk-blue;
+    border-bottom: 1px solid #333;
+    p{
+      margin:5px 0
+    }
+  }
+  .light-blue{
+    background-color: $light-blue;
+    border-bottom: 1px solid #333;
+    p{
+      margin:5px 0
+    }
+ }
 }
-
-.weather-info{
-  padding:15px;
+.application-bottom{
+  margin:30px 0 50px 0;
+  .weather-image{
+    img{
+    display:block;
+    width:150px;
+    height:auto;
+    margin:0 auto;
+    }
+  }
+  .weather-info{
+    padding:15px;
+    p{
+      margin-bottom:0;
+      padding:0px 0 2px 0;
+      font-weight:700;
+      color:#fff;
+      text-align:center;
+    }
+  }
 }
-.weather-info p{
-  margin-bottom:0;
-  padding:0px 0 2px 0;
-  font-weight:700;
-  color:#fff;
-  text-align:center;
-}
-.weather-image img{
-  display:block;
-  width:150px;
-  height:auto;
-  margin:0 auto;
 }

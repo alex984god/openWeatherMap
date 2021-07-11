@@ -1,16 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-body .slick-prev, 
-body .slick-next {
-    height: 45px;
-    width: 40px;
-     z-index: 100;
-     background:#1da5ba!important;
-  color:#1da5ba!important;
+
+body{
+  background-color:#edfefe!important;
+}
+$darrk-blue:#088787;
+$light-blue:#0df1f1;
+.slick-slider {
+  width: 250px;
+  height: auto;
+  margin: 0 auto;
+  background: $darrk-blue;
 }
 
-.slick-prev
-{
-  background:#1da5ba;
-  color:#1da5ba
+body .slick-prev, body .slick-next, body .slick-prev:hover, body  .slick-next:hover,  body .slick-prev:focus,  body .slick-next:focus {                 
+    height: 45px;
+    width: 45px;
+    z-index: 100;
+    border-radius:100%;
+    background:#1da5ba;
+    color:#1da5ba;
 }
+
 
